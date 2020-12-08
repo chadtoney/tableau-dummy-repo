@@ -2697,12 +2697,22 @@
         <datasource name='Sample - Superstore' />
       </datasources>
       <datasource-dependencies datasource='Sample - Superstore'>
+        <column datatype='string' name='[Category]' role='dimension' type='nominal' />
         <column datatype='date' name='[Order Date]' role='dimension' type='ordinal' />
+        <column datatype='string' name='[Region]' role='dimension' type='nominal' />
         <column datatype='string' name='[Segment]' role='dimension' type='nominal' />
+        <column-instance column='[Category]' derivation='None' name='[none:Category:nk]' pivot='key' type='nominal' />
         <column-instance column='[Order Date]' derivation='None' name='[none:Order Date:qk]' pivot='key' type='quantitative' />
+        <column-instance column='[Region]' derivation='None' name='[none:Region:nk]' pivot='key' type='nominal' />
         <column-instance column='[Segment]' derivation='None' name='[none:Segment:nk]' pivot='key' type='nominal' />
       </datasource-dependencies>
+      <filter class='categorical' column='[Sample - Superstore].[none:Category:nk]'>
+        <groupfilter function='level-members' level='[none:Category:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
       <filter class='quantitative' column='[Sample - Superstore].[none:Order Date:qk]' included-values='all' />
+      <filter class='categorical' column='[Sample - Superstore].[none:Region:nk]'>
+        <groupfilter function='level-members' level='[none:Region:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
       <filter class='categorical' column='[Sample - Superstore].[none:Segment:nk]'>
         <groupfilter function='level-members' level='[none:Segment:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
       </filter>
@@ -2723,16 +2733,22 @@
             <datasource name='Sample - Superstore' />
           </datasources>
           <datasource-dependencies datasource='Sample - Superstore'>
+            <column datatype='string' name='[Category]' role='dimension' type='nominal' />
             <column datatype='date' name='[Order Date]' role='dimension' type='ordinal' />
             <column datatype='real' default-format='c&quot;$&quot;#,##0.00' name='[Profit]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Region]' role='dimension' type='nominal' />
             <column datatype='string' name='[Segment]' role='dimension' type='nominal' />
+            <column-instance column='[Category]' derivation='None' name='[none:Category:nk]' pivot='key' type='nominal' />
             <column-instance column='[Order Date]' derivation='None' name='[none:Order Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Region]' derivation='None' name='[none:Region:nk]' pivot='key' type='nominal' />
             <column-instance column='[Segment]' derivation='None' name='[none:Segment:nk]' pivot='key' type='nominal' />
             <column-instance column='[Profit]' derivation='Sum' name='[sum:Profit:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <slices>
             <column>[Sample - Superstore].[none:Segment:nk]</column>
             <column>[Sample - Superstore].[none:Order Date:qk]</column>
+            <column>[Sample - Superstore].[none:Region:nk]</column>
+            <column>[Sample - Superstore].[none:Category:nk]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -2818,13 +2834,17 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='Sample - Superstore'>
+            <column datatype='string' name='[Category]' role='dimension' type='nominal' />
             <column datatype='string' name='[Country/Region]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
             <column datatype='date' name='[Order Date]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Region]' role='dimension' type='nominal' />
             <column datatype='real' default-format='c&quot;$&quot;#,##0.00' name='[Sales]' role='measure' type='quantitative' />
             <column datatype='string' name='[Segment]' role='dimension' type='nominal' />
             <column datatype='string' name='[State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[Category]' derivation='None' name='[none:Category:nk]' pivot='key' type='nominal' />
             <column-instance column='[Country/Region]' derivation='None' name='[none:Country/Region:nk]' pivot='key' type='nominal' />
             <column-instance column='[Order Date]' derivation='None' name='[none:Order Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Region]' derivation='None' name='[none:Region:nk]' pivot='key' type='nominal' />
             <column-instance column='[Segment]' derivation='None' name='[none:Segment:nk]' pivot='key' type='nominal' />
             <column-instance column='[State]' derivation='None' name='[none:State:nk]' pivot='key' type='nominal' />
             <column-instance column='[Sales]' derivation='Sum' name='[sum:Sales:qk]' pivot='key' type='quantitative' />
@@ -2836,6 +2856,8 @@
             <column>[Sample - Superstore].[none:Country/Region:nk]</column>
             <column>[Sample - Superstore].[none:Segment:nk]</column>
             <column>[Sample - Superstore].[none:Order Date:qk]</column>
+            <column>[Sample - Superstore].[none:Region:nk]</column>
+            <column>[Sample - Superstore].[none:Category:nk]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -2874,9 +2896,13 @@
         <datasource name='Sample - Superstore' />
       </datasources>
       <datasource-dependencies datasource='Sample - Superstore'>
+        <column datatype='string' name='[Category]' role='dimension' type='nominal' />
         <column datatype='date' name='[Order Date]' role='dimension' type='ordinal' />
+        <column datatype='string' name='[Region]' role='dimension' type='nominal' />
         <column datatype='string' name='[Segment]' role='dimension' type='nominal' />
+        <column-instance column='[Category]' derivation='None' name='[none:Category:nk]' pivot='key' type='nominal' />
         <column-instance column='[Order Date]' derivation='None' name='[none:Order Date:qk]' pivot='key' type='quantitative' />
+        <column-instance column='[Region]' derivation='None' name='[none:Region:nk]' pivot='key' type='nominal' />
         <column-instance column='[Segment]' derivation='None' name='[none:Segment:nk]' pivot='key' type='nominal' />
       </datasource-dependencies>
       <zones>
@@ -2900,7 +2926,23 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='9375' id='11' type='empty' w='58400' x='40800' y='1000'>
+                <zone h='9375' id='16' mode='checkdropdown' name='Profit by Segment' param='[Sample - Superstore].[none:Category:nk]' show-apply='true' type='filter' values='cascading' w='16800' x='40800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='9375' id='17' mode='checkdropdown' name='Profit by Segment' param='[Sample - Superstore].[none:Region:nk]' show-apply='true' type='filter' values='database' w='16800' x='57600' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='9375' id='11' type='empty' w='24800' x='74400' y='1000'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -2973,7 +3015,25 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='242' h='31250' id='9' is-fixed='true' name='Profit by Segment' w='44150' x='800' y='10375'>
+                <zone h='9375' id='16' mode='checkdropdown' name='Profit by Segment' param='[Sample - Superstore].[none:Category:nk]' show-apply='true' type='filter' values='cascading' w='16800' x='40800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='9375' id='17' mode='checkdropdown' name='Profit by Segment' param='[Sample - Superstore].[none:Region:nk]' show-apply='true' type='filter' values='database' w='16800' x='57600' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='193' h='25125' id='9' is-fixed='true' name='Profit by Segment' w='98400' x='800' y='10375'>
                   <layout-cache fixed-size-h='193' minwidth='200' type-h='fixed' type-w='scalable' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -3092,6 +3152,14 @@
           </strip>
         </edge>
       </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[Sample - Superstore].[none:Category:nk]</field>
+            <field>[Sample - Superstore].[none:Region:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
       <simple-id uuid='{AFDD7A80-50BB-4BF8-AFB3-6521418328D2}' />
     </window>
     <window class='worksheet' hidden='true' name='Sales Map'>
